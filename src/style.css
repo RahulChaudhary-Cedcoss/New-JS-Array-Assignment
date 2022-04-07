@@ -1,3 +1,4 @@
+
 #company {margin-top: 0%;
     width: 15%;
     padding: 3px;
@@ -20,6 +21,7 @@
 }
 #quantity {
     margin: 3px;
+    /* margin-left: 0%; */
     width: 15%;
     padding: 3px;
     margin-left: 4.3%;
@@ -35,14 +37,22 @@
     border: 2px solid black;
     margin-left: 14.3%;
 }
-table {
+ table {
     width: 50%;
-    /* margin-left: 12%; */
-    margin-top: 1%;
-    /* padding-bottom: 32%; */
-    /* background-color: red; */
-}
+    margin-left: 12%; 
+     margin-top: 1%;
+     /* padding-bottom: 32%;  */
+     /* background-color: red; */
+     /* border: 1px solid black; */
+ }
 
 td {
     text-align: center;
+} 
+/* #quantity {
+    margin-left: 0%;
+} */
+
+#deleteSelected {
+    margin-left: 60%;
 }
