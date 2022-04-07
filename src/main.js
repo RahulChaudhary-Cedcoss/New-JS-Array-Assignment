@@ -30,11 +30,11 @@ function myFunction() {
         options += `<option value="${index}"> ${element.CompanyName} ${element.Pmodel}</option>` 
     });document.getElementById("SelectedProduct").innerHTML = options;
     document.getElementById("UpdatedItems").innerHTML = options;
-    // document.getElementById("rating_product").innerHTML = options;
+    document.getElementById("Give_rating").innerHTML = options;
     };
 function Display() {
     html =
-        "<table><tr><th>Company</th><th>Model</th><th>Memory(GB)</th><th>Price(Rs)</th><th>Quantity</th><th>Rating</th></tr>";
+        "<table><tr><th>Company</th><th>Model</th><th>Memory(GB)</th><th>Price(Rs)</th><th>Quantity</th></tr>";
         var Table_footer = `<tr><th></th><th></th><th></th><th></th><th></th><th></th>
                              <th><button id = "deleteSelected" onclick="deleted()">Delete</button></th>
                              </tr></table>`
@@ -60,7 +60,7 @@ function Display() {
             // element.Pquantity +
             // "</td></tr>";
     });
-    html += "</table>";
+    // html += "</table>";
     document.getElementById("demo").innerHTML = html + Table_footer;
 };
 // console.log(html);
@@ -164,7 +164,7 @@ function sort() {
 
 ///          Delete Section
 
-function Deleted(){
+function deleted(){
         let ForCheck = document.querySelectorAll('input[name="feild"]:checked');
         let Selected = [];
         ForCheck.forEach((checkbox) => {
@@ -247,14 +247,15 @@ function addtocart() {
     var index = document.getElementById("SelectedProduct").value;
     var B = document.getElementById("quantity2").value;
     var data = productarray[index];
+    console.log(data.CompanyName)
     // console.log(A);
     // console.log(B);
     // console.log(typeof(data));
-    var calculatedData = data*B;
-    console.log(typeof(calculatedData));
+    var calculatedData = Number(data.Pprice)*B;
+    // console.log(typeof(calculatedData));
 
     var data1 = {
-        "ProductDetail" : `${data1.CompanyName} ${data1.Pmodel}`,
+        "ProductDetail" : `${data.CompanyName} ${data.Pmodel}`,
         "Quantity" : `${B}` ,
         "Price": `${data.Pprice}`,
 
@@ -263,7 +264,8 @@ function addtocart() {
         // Price: data,
     };
     totalcost += calculatedData;
-    Holder.push(data);
+    Holder.push(data1);
+    console.log(Holder);
 };
 // var Product_Bill = "<table><tr><th>ProductDetail</th><th>Quantity</th><th>Price</th></tr>";
 var Product_Bill = `<table>
@@ -293,9 +295,9 @@ function ItemsUpdate() {
     var Index = document.getElementById("UpdatedItems").value;
     var NewQuantity = document.getElementById("UpdatedQuantity").value;
     var data = productarray[Index];
-console.log(data)
+// console.log(data)
     data.Pquantity = NewQuantity;
-    console.log(typeof(data));
+    // console.log(typeof(data));
 
     Display();
 }
@@ -325,8 +327,8 @@ var Ratingtable = `<table>
 <tr>
     <th>Company</th>
     <th>Model</th>
-    <th>Memory(G</th>
-    <th>Price</th>
+    <th>Memory(GB)</th>
+    <th>Price(Rs)</th>
     <th>Rating</th>
 </tr>`
 
@@ -335,12 +337,12 @@ function Rating(){
     var rate = document.getElementById("Rate_me").value;
     
     var rateing_product = productarray[product];
-    rateing_product.CompanyName = rate
+    // rateing_product.CompanyName = rate;
     // console.log("Product :"+product);
     var product = {
         "CompanyName" : `${rateing_product.CompanyName}`,
         "Pmodel" : `${rateing_product.Pmodel}` ,
-        "Memory": `${rateing_product.Pmemory}` ,
+        "Pmemory": `${rateing_product.Pmemory}` ,
         "Pprice": `${rateing_product.Pprice}`,
         "Rating":`${rate}`,
     };
