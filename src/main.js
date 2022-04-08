@@ -162,7 +162,7 @@ function sort() {
 };
 
 
-///          Delete Section
+
 
 function deleted(){
         let ForCheck = document.querySelectorAll('input[name="feild"]:checked');
